@@ -1,5 +1,7 @@
 
 using mi_proyecto_sena.Data;
+using mi_proyecto_sena.implementation;
+using mi_proyecto_sena.services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Options;
 var builder = WebApplication.CreateBuilder(args);
@@ -32,3 +34,4 @@ app.MapControllerRoute(
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
 app.Run();
+builder.Services.AddScoped<Iusuarioservice, usuarioservice>();

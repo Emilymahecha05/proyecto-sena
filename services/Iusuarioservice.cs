@@ -9,6 +9,6 @@ namespace mi_proyecto_sena.services
     public interface Iusuarioservice
     {
         void crearUsuario(usuarioModel usuario);
-    
+        void CrearUsuario(usuarioModel usuario);
     }
 } 
