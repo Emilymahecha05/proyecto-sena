@@ -1,0 +1,25 @@
+@model mi_proyecto_sena.Models.usuarioModel
+
+<h1>Registrarse</h1>
+
+@using (Html.BeginForm(actionName: "register", controllerName: "usuario", FormMethod.Post))
+{
+    <Iabel>nombre</Iabel>
+
+    @Html.TextBoxFor(modelo => modelo.usuario_Nombre)
+    <br />
+    <Iabel>apellido</Iabel>
+
+    @Html.TextBoxFor(modelo => modelo.usuario_Apellido)
+    <br />
+    <Iabel>Email</Iabel>
+
+    @Html.TextBoxFor(modelo => modelo.usuario_correo)
+    <br />
+    <Iabel>Password</Iabel>
+
+    @Html.TextBoxFor(modelo => modelo.usuario_contraseña)
+    <br />
+    <input type="submit" value="Guardar" />
+
+}

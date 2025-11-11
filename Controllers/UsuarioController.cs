@@ -11,24 +11,31 @@ using Microsoft.Extensions.Logging;
 
 namespace mi_proyecto_sena.Controllers
 {
-    [Route("[/user]")]
+    [Route("user")]
     public class UsuarioController(Iusuarioservice usuarioservice) : Controller
     {
          private readonly Iusuarioservice usuarioservice = usuarioservice;
 
         [HttpPost]
         [Route("register")]
-        public IActionResult Register(usuarioModel usuario)
+        public async Task<ActionResult> Register(usuarioModel usuario)
         {
             if (usuario != null)
             {
-                usuarioservice.crearUsuario(usuario);
+                await usuarioservice.crearUsuario(usuario);
                 return Ok("usuario creado");
             }
             else
             {
                 return BadRequest("usuario no puede ser null");
-            } 
-        }     
+            }
+        }
+        [HttpGet]
+        [Route("register")]
+        public IActionResult Register()
+        {
+            return View();    
+        }
+
     }     
 }

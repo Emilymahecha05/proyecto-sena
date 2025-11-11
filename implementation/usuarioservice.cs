@@ -13,25 +13,24 @@ namespace mi_proyecto_sena.implementation
     public class usuarioservice : Iusuarioservice
     {
         private readonly DBcontext dBcontext;
-        public usuarioservice(DBcontext dBcontext)
-        { 
+        private readonly IPasswoedservice passwoedservice;
+        public usuarioservice(DBcontext dBcontext, IPasswoedservice passwoedservice)
+        {
             this.dBcontext = dBcontext;
-
+            this.passwoedservice = passwoedservice;
         }
 
-        public async void crearUsuario(usuarioModel usuario)
+        public async Task crearUsuario(usuarioModel usuario)
         {
             if (usuario != null)
             {
+                usuario.usuario_contraseña = passwoedservice.Hashpassword(usuario.usuario_contraseña);
                 dBcontext.usuarios.Add(usuario);
                 await dBcontext.SaveChangesAsync();
 
             } 
         }
 
-        public void CrearUsuario(usuarioModel usuario)
-        {
-            throw new NotImplementedException();
-        }
+      
     }
 }
