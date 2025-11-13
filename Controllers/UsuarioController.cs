@@ -20,16 +20,14 @@ namespace mi_proyecto_sena.Controllers
         [Route("register")]
         public async Task<ActionResult> Register(usuarioModel usuario)
         {
-            if (usuario != null)
+            if (ModelState.IsValid)
             {
                 await usuarioservice.crearUsuario(usuario);
-                return Ok("usuario creado");
+                return RedirectToAction("Index", "Home");
             }
-            else
-            {
-                return BadRequest("usuario no puede ser null");
-            }
+            return View(usuario);
         }
+        
         [HttpGet]
         [Route("register")]
         public IActionResult Register()
@@ -38,4 +36,4 @@ namespace mi_proyecto_sena.Controllers
         }
 
     }     
-}
+}  
