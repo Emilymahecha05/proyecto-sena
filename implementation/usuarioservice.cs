@@ -24,7 +24,8 @@ namespace mi_proyecto_sena.implementation
         {
             if (usuario != null)
             {
-                usuario.usuario_contraseña = passwoedservice.Hashpassword(usuario.usuario_contraseña);
+                usuario.usuario_contraseña = passwoedservice.Hashpassword(usuario.usuario_contraseña, out string salt);
+                usuario.usuario_salt =salt;
                 dBcontext.usuarios.Add(usuario);
                 await dBcontext.SaveChangesAsync();
 

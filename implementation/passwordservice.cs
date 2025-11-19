@@ -13,21 +13,23 @@ namespace mi_proyecto_sena.implementation
 {
     public class passwordservice : IPasswoedservice
     {
-        public string Hashpassword(string password)
+        public string Hashpassword(string password, out string salt)
         {
          string hashedpassword;
-            byte[] salt = new byte[128 / 8];
+            byte[] SaltBytes = new byte[128 / 8];
             using (var rng = RandomNumberGenerator.Create())
             {
-                rng.GetBytes(salt);
+                rng.GetBytes(SaltBytes);
             }
+            salt = Convert.ToBase64String(SaltBytes);
             hashedpassword = Convert.ToBase64String(KeyDerivation.Pbkdf2(
                password: password,
-               salt: salt,
+               salt: SaltBytes,
                prf: KeyDerivationPrf.HMACSHA256,
                iterationCount: 100000,
                numBytesRequested: 256 / 8));
             return hashedpassword;
+
             }
         }
     }  

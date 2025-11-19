@@ -8,6 +8,6 @@ namespace mi_proyecto_sena.services
     
     public interface IPasswoedservice
     {
-        string Hashpassword(String password);
+        string Hashpassword(String password,out string salt);
     }
 }
