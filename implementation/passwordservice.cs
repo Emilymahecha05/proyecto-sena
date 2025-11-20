@@ -13,6 +13,11 @@ namespace mi_proyecto_sena.implementation
 {
     public class passwordservice : IPasswoedservice
     {
+        public bool compararContraseña(string contraseña, string contraseñaBD, string salt)
+        {
+            throw new NotImplementedException();
+        }
+
         public string Hashpassword(string password, out string salt)
         {
          string hashedpassword;

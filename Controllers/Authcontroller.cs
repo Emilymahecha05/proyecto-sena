@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using mi_proyecto_sena.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -14,6 +15,12 @@ namespace mi_proyecto_sena.Controllers
       [HttpGet]
       [Route("login")]
       public IActionResult login()
+        {
+            return View();
+        }
+        [HttpGet]
+      [Route("login")]
+      public IActionResult login(loginModel login)
         {
             return View();
         }
