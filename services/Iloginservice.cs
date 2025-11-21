@@ -6,8 +6,10 @@ using mi_proyecto_sena.Models;
 
 namespace mi_proyecto_sena.services
 {
-    public interface Iloginservice
+    public interface Iloginservice 
     {
-        bool login(loginModel login);
+
+
+       Task<usuarioModel?> login(loginModel login);
     }
 }
